@@ -29,13 +29,14 @@ class Ball{
     this.height2=hei2;
 
 } 
-tegnBall(){
+tegnBall(){// metoden tegner bolden
     fill('white');
     ellipse(this.xpos,this.ypos,this.with2,this.height2)
 }
-moveball(){
+moveball(){//metoden flytter bolden
 this.xpos+=this.xspeed;
 this.ypos+=this.yspeed;
 }
+
 
 };
