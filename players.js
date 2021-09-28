@@ -4,7 +4,7 @@ this.x=xa;
 this.y=ya;
 this.with= wit;
 this.height= hei;
-this.speedy=10;
+this.points=0;
     }
 
 tegn(){// Tegner spillerne
@@ -34,9 +34,46 @@ tegnBall(){// metoden tegner bolden
     ellipse(this.xpos,this.ypos,this.with2,this.height2)
 }
 moveball(){//metoden flytter bolden
-this.xpos+=this.xspeed;
-this.ypos+=this.yspeed;
-}
+
+// Tjeker om bolden rammer toppen eller bunden af canvas og hvis den gøre 
+// så ændres y retning af bolden 
+if(ball.ypos-(ball.height2/2) <= 0 || ball.ypos+(ball.height2/2) >= 700){
+ball.yspeed*=(-1)};
+//
+/*if(ball.xpos-(ball.with2/2) <= 0){
+  if(player2.points != 10){
+  player2.points ++
+  this.RespawnBallAndPlayers();
+  console.log(player2.points)}
+  
+};
+if(ball.xpos+(ball.with2/2) >= 900){
+    if(player1.points != 10 ){
+    player1.points ++
+    this.RespawnBallAndPlayers();
+    console.log(player1.points)}
+
+};*/
+
+// Denne if statement tjekker om bolden rammer en af spillerne og skyder den tilbage
+if((player1.y < ball.ypos && (player1.y+player1.height) > ball.ypos && ball.xpos-(ball.with2/2) <= player1.x+player1.with && ball.xpos-(ball.with2/2) >= player1.x+(player1.with/2))
+||(player2.y < ball.ypos && (player2.y+player2.height) > ball.ypos && ball.xpos+(ball.with2/2) >=player2.x && ball.xpos+(ball.with2/2) >= player2.x-(player2.with/2)))
+{
+ ball.xspeed *=(-1.05)};
+
+ this.xpos+=this.xspeed + 0.001;
+this.ypos+=this.yspeed + 0.001;
+};
+/*RespawnBallAndPlayers(){
+    player1.x = this.xa;
+    player1.y = this.ya;
+    player2.x = this.xa;
+    player2.y = this.ya;
+    ball.xpos = this.xp;
+    ball.ypos = this.yp;
+    randomRetning();
+
+}*/
 
 
 };
