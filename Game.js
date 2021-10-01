@@ -1,28 +1,33 @@
+
 let player1 = new Player(10,330,27,140)
 let player2 = new Player(863,330,27,140)
 let ball = new Ball(430,390,6,3,32,32)
-let scoreForP1;
-let scoreForP2;
 let isGameInProgress= true;
 const speed = 10;
+
 
 function randomRetning(){
 ball.xspeed*=random([-1,1]);// dette sørger for at bolden skyder i en tilfældig
 ball.yspeed*=random([-1,1]);// retning*/ 
+};
+
+function displayText(){
+    fill('white');
+    textSize(18);
+    text("Player 1: " + player1.points + " Points",10,18)
+    text("Player 2: " + player2.points + " Points",740,18)
 }
-
-
 // laver baggrund og sætter spillet til 60 frames pr sek
 function setup(){
 frameRate(60);
 let canvas =createCanvas (900,700);
 background('black');
 randomRetning();
-console.log("Hello world");
 };
 
 function draw(){
     background('black');
+    displayText();
 if(isGameInProgress){
     player1.tegn();
     player2.tegn();

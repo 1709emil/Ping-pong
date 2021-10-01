@@ -27,7 +27,10 @@ class Ball{
     this.yspeed=ys;
     this.with2=wit2;
     this.height2=hei2;
-
+    this.index = 0;
+    this.Sxpos=this.xpos;
+    this.Sypos=this.ypos;
+    this.StartSpeed= this.xspeed;
 } 
 tegnBall(){// metoden tegner bolden
     fill('white');
@@ -39,21 +42,16 @@ moveball(){//metoden flytter bolden
 // så ændres y retning af bolden 
 if(ball.ypos-(ball.height2/2) <= 0 || ball.ypos+(ball.height2/2) >= 700){
 ball.yspeed*=(-1)};
-//
-/*if(ball.xpos-(ball.with2/2) <= 0){
-  if(player2.points != 10){
-  player2.points ++
-  this.RespawnBallAndPlayers();
-  console.log(player2.points)}
-  
+
+if(ball.xpos-(ball.with2/2) <= 0){
+    this.addScore(player2);
+    this.RespawnBallAndPlayers();
+    
 };
 if(ball.xpos+(ball.with2/2) >= 900){
-    if(player1.points != 10 ){
-    player1.points ++
+    this.addScore(player1);
     this.RespawnBallAndPlayers();
-    console.log(player1.points)}
-
-};*/
+};
 
 // Denne if statement tjekker om bolden rammer en af spillerne og skyder den tilbage
 if((player1.y < ball.ypos && (player1.y+player1.height) > ball.ypos && ball.xpos-(ball.with2/2) <= player1.x+player1.with && ball.xpos-(ball.with2/2) >= player1.x+(player1.with/2))
@@ -62,18 +60,29 @@ if((player1.y < ball.ypos && (player1.y+player1.height) > ball.ypos && ball.xpos
  ball.xspeed *=(-1.05)};
 
  this.xpos+=this.xspeed + 0.001;
-this.ypos+=this.yspeed + 0.001;
+ this.ypos+=this.yspeed + 0.001;
 };
-/*RespawnBallAndPlayers(){
-    player1.x = this.xa;
-    player1.y = this.ya;
-    player2.x = this.xa;
-    player2.y = this.ya;
-    ball.xpos = this.xp;
-    ball.ypos = this.yp;
-    randomRetning();
 
-}*/
+
+addScore(plr){
+if(plr.points != 10){
+if(this.index <1){
+    plr.points ++
+    this.index ++
+    console.log(plr + plr.points);
+};
+if(this.index == 1){
+    this.index =0;
+    return;};
+};
+};
+RespawnBallAndPlayers(){
+    ball.xpos = this.Sxpos;
+    ball.ypos = this.Sypos;
+    ball.xspeed=this.StartSpeed;
+    randomRetning();
+ 
+};
 
 
 };
