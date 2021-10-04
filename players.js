@@ -30,13 +30,22 @@ class Ball{
     this.index = 0;
     this.Sxpos=this.xpos;
     this.Sypos=this.ypos;
-    this.StartSpeed= this.xspeed;
+    this.StartSpeed= xs;
+    this.winScore= 5;
 } 
 tegnBall(){// metoden tegner bolden
     fill('white');
     ellipse(this.xpos,this.ypos,this.with2,this.height2)
 }
 moveball(){//metoden flytter bolden
+
+    if(player1.points == this.winScore){
+        isGameInProgress = false;
+        };
+        
+    if(player2.points == this.winScore){
+        isGameInProgress = false;
+        };
 
 // Tjeker om bolden rammer toppen eller bunden af canvas og hvis den gøre 
 // så ændres y retning af bolden 
@@ -63,19 +72,19 @@ if((player1.y < ball.ypos && (player1.y+player1.height) > ball.ypos && ball.xpos
  this.ypos+=this.yspeed + 0.001;
 };
 
-
+// Giver den spiller der har scoret et point
 addScore(plr){
-if(plr.points != 10){
+if(plr.points != this.winScore){
 if(this.index <1){
     plr.points ++
     this.index ++
-    console.log(plr + plr.points);
 };
 if(this.index == 1){
     this.index =0;
     return;};
 };
 };
+// resetter boldens position og giver den en tilfældig start retning
 RespawnBallAndPlayers(){
     ball.xpos = this.Sxpos;
     ball.ypos = this.Sypos;

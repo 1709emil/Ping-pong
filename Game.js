@@ -11,28 +11,31 @@ ball.xspeed*=random([-1,1]);// dette sørger for at bolden skyder i en tilfældi
 ball.yspeed*=random([-1,1]);// retning*/ 
 };
 
+//Viser hvor mange points hver spiller har.
 function displayText(){
     fill('white');
     textSize(18);
     text("Player 1: " + player1.points + " Points",10,18)
     text("Player 2: " + player2.points + " Points",740,18)
-}
+};
+
+
 // laver baggrund og sætter spillet til 60 frames pr sek
 function setup(){
 frameRate(60);
 let canvas =createCanvas (900,700);
-background('black');
 randomRetning();
 };
 
 function draw(){
-    background('black');
-    displayText();
-if(isGameInProgress){
-    player1.tegn();
-    player2.tegn();
-    ball.tegnBall();
-    ball.moveball();
+    // tjekker om spillet er igang og hvis det er så skal den kalde nogle metoeder
+    if(isGameInProgress){
+        background('black');
+        displayText();
+        player1.tegn();
+        player2.tegn();
+        ball.tegnBall();
+        ball.moveball();
 
 // dette tjekker om hvis en af de knapper der bruges i spillet, bliver 
     //trykket og hvis den gør så flyt den spiller i den retning
@@ -63,8 +66,19 @@ if(isGameInProgress){
          player2.movePlayer2(speed*(-1));
      };
 }; 
-if(isGameInProgress == false){
-    background('black')
+    // Hvis spillet ikke er igang må der være en spiller der har vundet
+    // Der visses så hvilken spiller der har vundet 
+    if(isGameInProgress === false){
+        background('red')
+        if(player1.points == ball.winScore){
+            fill('white')
+            textSize(35)
+            text("Player 1 har vundet !!!",300,350);}
+    
+            if(player2.points == ball.winScore){
+            fill('white')
+            textSize(35)
+            text("Player 2 har vundet !!!",300,350);}
 };
 };
 
