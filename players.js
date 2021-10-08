@@ -33,7 +33,7 @@ class Ball{
     this.StartSpeed= xs;
     this.winScore= 5;
 } 
-tegnBall(){// metoden tegner bolden
+drawBall(){// metoden tegner bolden
     fill('white');
     ellipse(this.xpos,this.ypos,this.with2,this.height2)
 }
@@ -89,7 +89,7 @@ RespawnBallAndPlayers(){
     ball.xpos = this.Sxpos;
     ball.ypos = this.Sypos;
     ball.xspeed=this.StartSpeed;
-    randomRetning();
+    randomDirection();
  
 };
 

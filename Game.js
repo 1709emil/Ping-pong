@@ -6,7 +6,7 @@ let isGameInProgress= true;
 const speed = 10;
 
 
-function randomRetning(){
+function randomDirection(){
 ball.xspeed*=random([-1,1]);// dette sørger for at bolden skyder i en tilfældig
 ball.yspeed*=random([-1,1]);// retning*/ 
 };
@@ -24,7 +24,7 @@ function displayText(){
 function setup(){
 frameRate(60);
 let canvas =createCanvas (900,700);
-randomRetning();
+randomDirection();
 };
 
 function draw(){
@@ -34,7 +34,7 @@ function draw(){
         displayText();
         player1.tegn();
         player2.tegn();
-        ball.tegnBall();
+        ball.drawBall();
         ball.moveball();
 
 // dette tjekker om hvis en af de knapper der bruges i spillet, bliver 
