@@ -1,7 +1,7 @@
 
 let player1 = new Player(10,330,27,140)
 let player2 = new Player(863,330,27,140)
-let ball = new Ball(430,390,6,3,32,32)
+let ball = new Ball(430,390,5,2,32,32)
 let isGameInProgress= true;
 const speed = 10;
 
@@ -22,7 +22,7 @@ function displayText(){
 
 // laver baggrund og sætter spillet til 60 frames pr sek
 function setup(){
-frameRate(60);
+frameRate(50);
 let canvas =createCanvas (900,700);
 randomDirection();
 };
